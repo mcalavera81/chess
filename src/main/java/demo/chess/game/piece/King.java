@@ -10,7 +10,7 @@ public class King extends Piece {
     }
 
     @Override
-    public boolean isMoveValid(Board board, Coords start, Coords end) {
+    public boolean doValidate(Board board, Coords start, Coords end) {
         return true;
     }
 

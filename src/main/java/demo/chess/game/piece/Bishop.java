@@ -16,13 +16,12 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public boolean isMoveValid(Board board, Coords start, Coords end) {
+    public boolean doValidate(Board board, Coords start, Coords end) {
 
         int diffX = Math.abs(end.X - start.X);
         int diffY = Math.abs(end.Y - start.Y);
 
         return diffX == diffY && Math.abs(diffX) > 0 &&
-                notCapturingOwnPiece(board, end) &&
                 !pathBlocked(board, start,end);
 
     }
@@ -41,9 +40,6 @@ public class Bishop extends Piece {
         return false;
 
     }
-    private boolean notCapturingOwnPiece(Board board, Coords coords) {
-        Piece capturablePiece = board.getSquare(coords).getPiece();
-        return capturablePiece==null || this.isWhite() != capturablePiece.isWhite();
-    }
+
 
 }

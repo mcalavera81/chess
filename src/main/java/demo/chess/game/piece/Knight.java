@@ -13,15 +13,9 @@ public class Knight extends Piece {
 
 
     @Override
-    public boolean isMoveValid(Board board, Coords start, Coords end) {
+    public boolean doValidate(Board board, Coords start, Coords end) {
 
-        return allowedMoves(Coords.of(start.X, start.Y)) .contains(Coords.of(end.X, end.Y)) &&
-                notCapturingOwnPiece(board, Coords.of(end.X, end.Y));
-    }
-
-    private boolean notCapturingOwnPiece(Board board, Coords coords) {
-        Piece capturablePiece = board.getSquare(coords).getPiece();
-        return capturablePiece==null || this.isWhite() != capturablePiece.isWhite();
+        return allowedMoves(Coords.of(start.X, start.Y)) .contains(Coords.of(end.X, end.Y));
     }
 
 

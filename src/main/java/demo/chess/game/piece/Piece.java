@@ -13,6 +13,12 @@ public abstract class Piece {
     }
 
 
+    boolean notCapturingOwnPiece(Board board, Coords coords) {
+        Piece capturablePiece = board.getSquare(coords).getPiece();
+        return capturablePiece==null || this.isWhite() != capturablePiece.isWhite();
+    }
+
+
     public abstract PieceType type();
 
     public boolean isWhite() {
@@ -50,7 +56,12 @@ public abstract class Piece {
     }
 
 
-    public abstract boolean isMoveValid(Board board, Coords start, Coords end);
+    public boolean isMoveValid(Board board, Coords start, Coords end){
+        return  notCapturingOwnPiece(board,end) &&
+                doValidate(board, start, end);
+    }
+
+    public abstract boolean doValidate(Board board, Coords start, Coords end);
 
 
 }

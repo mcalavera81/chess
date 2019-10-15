@@ -4,8 +4,10 @@ import demo.chess.game.Board;
 import demo.chess.game.Coords;
 import demo.chess.game.DefaultGame;
 import demo.chess.game.Square;
+import demo.chess.game.piece.Piece;
 import demo.chess.game.piece.Piece.PieceColor;
 import demo.chess.game.piece.Piece.PieceType;
+import demo.chess.game.piece.Queen;
 import demo.chess.player.Player;
 import lombok.Value;
 import org.junit.Assert;
@@ -436,6 +438,10 @@ public class GameTest {
 
         assertThat(game.move(whiteSide, Coords.of(7, 2), Coords.of(5, 0))).isFalse();
 
+    }
+
+    public void demo(){
+        Queen.newPiece(null, null);
     }
 
     private void validatePieces(PieceExpectation expectation, List<Square> squares) {

@@ -10,7 +10,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean isMoveValid(Board board, Coords start, Coords end) {
+    public boolean doValidate(Board board, Coords start, Coords end) {
 
         return isValidForwardMove(board, start, end) ||
         isValidCaptureMove(board, start, end);
@@ -22,7 +22,6 @@ public class Pawn extends Piece {
 
 
         return capturablePiece != null &&
-                capturablePiece.isWhite() != isWhite() &&
                 end.X - start.X == direction() &&
                 Math.abs(end.Y -start.Y) == 1;
 
